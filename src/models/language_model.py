@@ -1,6 +1,6 @@
 from .abstract_model import AbstractModel
 from database.db import db
-from typing import Dict
+from typing import Dict, List
 from pymongo.collection import Collection
 
 
@@ -15,3 +15,11 @@ class LanguageModel(AbstractModel):
             "name": self.data["name"],
             "acronym": self.data["acronym"],
         }
+
+    @classmethod
+    def list_dicts(cls) -> List[Dict[str, str]]:
+        languages = cls.find()
+        return [
+            language.to_dict()
+            for language in languages
+        ]
