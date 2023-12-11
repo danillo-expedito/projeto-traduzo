@@ -9,3 +9,9 @@ class LanguageModel(AbstractModel):
 
     def __init__(self, data: Dict[str, str]):
         super().__init__(data)
+
+    def to_dict(self) -> Dict[str, str]:
+        return {
+            "name": self.data["name"],
+            "acronym": self.data["acronym"],
+        }
